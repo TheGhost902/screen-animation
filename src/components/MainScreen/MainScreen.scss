@@ -1,0 +1,22 @@
+.main-screen {
+    height: 100vh;
+    width: 100vw;
+
+    overflow: hidden;
+    background-color: cadetblue;
+}
+.main-screen__status {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #fff;
+
+    font-size: 22px;
+}
