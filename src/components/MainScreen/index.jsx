@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react'
+import debounce from 'lodash/debounce'
 
 import './MainScreen.scss'
 
@@ -8,14 +9,23 @@ export function MainScreen({ children }) {
     const [screenNumber, setScreenNumber] = useState(0)
     const clientYRef = useRef(0)
 
+    const debouncedScrollHandler = debounce(delta => {
+        if (children && children.length) {
+            const { length } = children
+
+            // scroll direction
+            // high limit
+            if (delta > 0 && screenNumber > 0)
+                setScreenNumber(screenNumber - 1)
+            // low limit
+            if (delta < 0 && screenNumber < length - 1)
+                setScreenNumber(screenNumber + 1)
+        }
+    }, 200)
     function scrollHandler(e) {
         const delta = e.nativeEvent.wheelDeltaY
 
-        // if (screenNumber >= children.length) return
-
-        // scroll direction
-        if (delta > 0) setScreenNumber(screenNumber - 1)
-        if (delta < 0) setScreenNumber(screenNumber + 1)
+        debouncedScrollHandler(delta)
     }
 
     function touchStartHandler(e) {
@@ -24,8 +34,18 @@ export function MainScreen({ children }) {
     function touchEndHandler(e) {
         const { clientY } = e.nativeEvent.changedTouches[0]
 
-        if (clientY > clientYRef.current) setScreenNumber(screenNumber - 1)
-        if (clientY < clientYRef.current) setScreenNumber(screenNumber + 1)
+        if (children && children.length) {
+            const { length } = children
+            const { current } = clientYRef
+        
+            // scroll direction
+            // high limit
+            if (clientY > current && screenNumber > 0)
+                setScreenNumber(screenNumber - 1)
+            // low limit
+            if (clientY < current && screenNumber < length - 1)
+                setScreenNumber(screenNumber + 1)
+        }
     }
 
     return (
