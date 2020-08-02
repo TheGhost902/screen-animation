@@ -10,15 +10,27 @@ export function App() {
         <div className="app">
             <MainScreen>
                 <ScreenContainer id={0}>
-                    <h1>First Screen</h1>
+                    <div className="app__screen">
+                        <h1 className="app__screen-title">
+                            First Screen
+                        </h1>
+                    </div>
                 </ScreenContainer>
 
                 <ScreenContainer id={1}>
-                    <h1>Second Screen</h1>
+                    <div className="app__screen">
+                        <h1 className="app__screen-title">
+                            Second Screen
+                        </h1>
+                    </div>
                 </ScreenContainer>
                 
                 <ScreenContainer id={2}>
-                    <h1>Third Screen</h1>
+                    <div className="app__screen">
+                        <h1 className="app__screen-title">
+                            Third Screen
+                        </h1>
+                    </div>
                 </ScreenContainer>
             </MainScreen>
         </div>

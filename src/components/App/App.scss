@@ -1,3 +1,31 @@
 body {
     margin: 0;
+
+    color: #333;
+}
+
+.app {
+    background-color: #5a7161;
+    background-image: url('../../static/img/bg.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.app__screen {
+    width: 100%;
+    min-width: 300px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+
+    background-color: #eee;
+    background: radial-gradient(#fff, #eee);
+    border: 7px solid #333;
+    box-shadow: 0 0 20px rgba(0, 0, 0, .5);
+}
+.app__screen-title {
+    font-size: 60px;    
+    text-align: center;
 }
